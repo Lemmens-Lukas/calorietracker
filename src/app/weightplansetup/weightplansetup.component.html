@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Voedingsplan instellen</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment color="success" [(ngModel)]="selectedSegment">
+    <ion-segment-button value="first">
+      <ion-label>Gewicht</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="second" [disabled]="!isInputValid('first')">
+      <ion-label>Activiteit</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="third" [disabled]="!isInputValid('first') || !isInputValid('second')">
+      <ion-label>Plan</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  
+  <div [ngSwitch]="selectedSegment">
+    <div *ngSwitchCase="'first'">
+      <div class="content">
+        <ion-label class="title">Enter gewicht:</ion-label>
+        <ion-input class="input" [(ngModel)]="currentWeigth" placeholder="Enter gewicht" required></ion-input>
+
+        <ion-label class="title">Enter streef gewicht:</ion-label>
+        <ion-input class="input" [(ngModel)]="goalWeigth" placeholder="Enter gewicht" required></ion-input> 
+      </div>
+    </div>
+    <div *ngSwitchCase="'second'">
+      <div class="content">
+          <ion-label class="title">Hoe actief ben je?</ion-label>
+          <ion-item style="margin-top: 25px;">
+            <ion-select class="select" [(ngModel)]="activiteit">
+              <ion-select-option value="sedentary">Inactief</ion-select-option>
+              <ion-select-option value="lightly_active">Licht actief</ion-select-option>
+              <ion-select-option value="moderately_active">Matig actief</ion-select-option>
+              <ion-select-option value="very_active">Zeer actief</ion-select-option>
+              <ion-select-option value="super_active">Super actief</ion-select-option>
+            </ion-select>
+          </ion-item>      
+      </div>
+    </div>
+    <div *ngSwitchCase="'third'">
+      <div class="content">
+        <ion-label class="title">Selecteer je plan:</ion-label>
+          <ion-item style="margin-top: 25px;">
+            <ion-select class="select" [(ngModel)]="plan">
+              <ion-select-option value="balanced">Evenwichtig</ion-select-option>
+              <ion-select-option value="muscle_preservation">Spierbehoud</ion-select-option>
+              <ion-select-option value="endurance">Duurtraining</ion-select-option>
+              <ion-select-option value="athletic">Atletisch</ion-select-option>
+            </ion-select>
+          </ion-item>      
+        <button (click)="updatePlan()" class="update-button" [disabled]="!isInputValid('third')">Update plan</button>
+      </div>
+    </div>
+  </div>
+  
+</ion-content>

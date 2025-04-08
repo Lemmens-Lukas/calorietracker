@@ -1,0 +1,91 @@
+.icon{
+    color: #09c567;
+    margin-right: 20px;
+}
+
+.foodlist{
+    margin: 0px;
+    //border: 1px solid #09c567;   
+}
+
+.header{
+    background-color: #9b9b9bcc;
+}
+
+.header-label{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.img{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.item-header{
+    font-size: 12px; 
+}
+
+p.item-label{
+    font-size: 11px;
+    color: #09c567;
+}
+
+.foodlist-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Full height of the viewport */
+  }
+  
+  .fixed-header {
+    position: sticky;
+    top: 0;
+    z-index: 10; /* Ensures it stays above content */
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .scrollable-list {
+    flex: 1; /* Take up the remaining space in the container */
+    overflow-y: auto; /* Enables vertical scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS devices */
+  } 
+
+  /* Media query for larger screens (e.g., tablets and larger devices) */
+  @media (min-height: 600px) {
+    .scrollable-list {
+      max-height: 240px; /* Increase max-height on taller screens */
+    }
+  }
+
+  @media (min-height: 700px) {
+    .scrollable-list {
+      max-height: 310px; /* Increase max-height on taller screens */
+    }
+  }
+
+  @media (min-height: 800px) {
+    .scrollable-list {
+      max-height: 435px; /* Increase max-height on taller screens */
+    }
+  }
+
+  @media (min-height: 900px) {
+    .scrollable-list {
+      max-height: 500px; /* Increase max-height on taller screens */
+    }
+  }
+
+  @media (min-height: 1000px) {
+    .scrollable-list {
+      max-height: 600px; /* Increase max-height on taller screens */
+    }
+  }
+
+  /* Prevent scrolling on the page itself */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Ensures the body takes up full height */
+    overflow: hidden; /* Prevent scrolling on the entire page */
+  }

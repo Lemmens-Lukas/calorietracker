@@ -35,3 +35,26 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+
+ion-datetime::part(calendar-day today) {
+    color: #09c567;  /* Color for today */
+    border: 1px solid #09c567; /* Border color for today */
+  }
+  
+  ion-datetime::part(calendar-day active) {
+    background-color: #09c567; /* Background color for active days */
+    color: #fff; /* Text color for active days */
+  }
+  
+  ion-datetime::part(calendar-day):focus {
+    background-color: #09c567; /* Focus background */
+    color: #fff;
+    box-shadow: 0px 0px 0px 4px rgb(154, 209, 98, 0.2); /* Focus shadow */
+    border: 1px solid green;
+  }
+  
+  ion-datetime.ios::part(calendar-day active),
+  ion-datetime.ios::part(calendar-day active):focus {
+    color: #fff; /* Active text color for iOS */
+  }

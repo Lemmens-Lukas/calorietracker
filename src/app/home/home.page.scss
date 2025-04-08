@@ -1,6 +1,6 @@
 #container {
   text-align: center;
-
+  height: 100%;
   position: absolute;
   left: 0;
   right: 0;
@@ -24,4 +24,221 @@
 
 #container a {
   text-decoration: none;
+}
+
+.picker-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.date-picker {
+  margin: 5px;
+  margin-bottom: 16px;
+}
+
+ion-button {
+  width: 100%;
+  max-width: 200px;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.3s ease-in; /* Smooth fade-in effect */
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease-out; /* Smooth fade-out effect */
+}
+
+.tracker-progress {
+  display: flex;               
+  justify-content: space-around; 
+  align-items: center;
+  height: fit-content;
+}
+
+app-circular-progress-bar {
+  margin: 10px 10px;            /* Optional: Space between progress bars */
+}
+
+//tracker div
+.tracker-div{
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+
+  ion-progress-bar {
+    --background: #c6c6c6b3;
+    --progress-background: #09c567;
+    border-radius: 2px;
+  }
+}
+
+.tracker-info {
+  display: flex;            /* Use flexbox to align items next to each other */
+  align-items: center;     /* Center items vertically */
+  justify-content: space-between; /* Space them evenly */
+  padding-top: 5px;
+}
+
+.tracker-info p {
+  margin: 0;               /* Remove default margin for the paragraph */
+  font-size: 16px;         /* Adjust font size as needed */
+}
+
+.tracker-info span {
+  font-size: 16px;         /* Adjust font size as needed */
+  color: gray;             /* Optional: change text color */
+}
+
+// modal
+.block {
+  width: 100%;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+ion-modal {
+  --height: auto;
+}
+
+.block{
+  ion-button{
+    --background: #09c567;
+    margin-top: 10px;
+  }
+
+  ion-button:focus {
+    outline: none;         
+    box-shadow: none;      
+  }
+}
+
+/* Remove the blue box-shadow on focus */
+ion-tab-button {
+  --ion-focused-border-color: none; /* For some Ionic versions */
+  --ion-focused-box-shadow: none;   /* Another variable for specific versions */
+}
+
+// icon
+.icon{
+  color: #09c567;
+}
+
+.icon-text{
+  color: #09c567;
+}
+
+.progress-bar {
+  transition: width 2s ease; /* Animate the width (progress) over 2 seconds */
+}
+
+.food-itemlist{
+  height: 60%;
+  width: 100%;
+  overflow: scroll;
+  position: absolute;
+  bottom: 0;
+  overflow-x: hidden;
+}
+
+/* all for profile setting*/
+.block-profile{
+  height: fit-content;
+}
+
+.profile-list{
+  width: 100%;
+}
+
+.profile-header{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.custom-label {
+  display: flex;
+  align-items: center;  /* Vertically center the icon and text */
+}
+
+.custom-label ion-icon {
+  margin-right: 8px;  /* Add some space between the icon and text */
+  font-size: 24px;    /* Adjust the icon size if needed */
+  vertical-align: middle;
+}
+
+.icon-red{
+  color: red;
+}
+
+.fab{
+  color: #09c567 !important;
+}
+
+.sticky-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10; /* Ensure the toolbar is above the content */
+  background-color: var(--ion-toolbar-background); /* Keeps the background color of the toolbar */
+}
+
+/* Ensure full-page layout with flexbox */
+/*.content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  padding: 10px;
+}*/
+.content-container {
+  display: flex;
+  flex-direction: column; 
+  height: 100%; /* Full viewport height */
+  overflow-x: hidden; /* Prevent whole page scrolling */
+}
+
+/* Tracker Section - Keep it flexible and prevent overlap */
+.tracker-section {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 0px;
+}
+
+/* Food List Section - Prevent it from overlapping */
+/*.food-list-section {
+  width: 100%;
+  max-width: 1280px;
+  flex-grow: 1; 
+  overflow-y: auto;
+}*/
+.food-list-section {
+  height: 100%; /* Takes remaining space */
+  overflow: hidden; /* Prevents unnecessary scrolling */
+  overflow-y: auto;
+}
+
+/* Ensure the food list is scrollable but contained */
+.scrollable-food-list {
+  max-height: 100vh; /* Set a fixed height (adjust as needed) */
+  overflow-y: hidden; /* Enables scrolling */
+}
+
+ion-content {
+  height: 100%;
+  overflow: hidden; /* Prevent scrolling on the entire page */
 }

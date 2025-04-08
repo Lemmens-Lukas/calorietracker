@@ -1,0 +1,8 @@
+
+  <ng-container>
+    <app-accordion-list-item 
+      [header]="AccordionHeaders[0]"
+      (addItem)="addItemToFoodList(0, $event)" 
+      (deleteItemEvent)="deleteItemFromList($event)">
+    </app-accordion-list-item>
+  </ng-container>

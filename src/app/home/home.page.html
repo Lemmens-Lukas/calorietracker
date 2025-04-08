@@ -1,20 +1,146 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+  <!-- Main Tabs Component -->
+  <ion-tabs>
+    <!-- Home Tab -->
+    <ion-tab tab="home">
+      <ion-content class="agenda-tab">
+          <ion-toolbar class="sticky-toolbar">
+            <ion-buttons slot="end">
+              <ion-button id="open-modal-calendar" expand="block"><!--(click)="toggleDatePicker()"-->
+                <ion-icon class="icon" slot="icon-only" name="calendar-outline"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+            <ion-title>
+              {{ confirmedDate ? confirmedDate : 'Vandaag' }}
+            </ion-title>
+          </ion-toolbar>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+        <!-- model calendar -->
+        <ion-modal trigger="open-modal-calendar" [initialBreakpoint]="1" [breakpoints]="[0, 1]" #myModal>
+          <ng-template>
+            <div class="block">
+              <ion-datetime (ionChange)="onDateChange($event)" [value]="confirmedDateString" presentation="date"></ion-datetime>
+              <ion-button class="btn-modal" (click)="confirmDate()">
+                Confirm Date
+              </ion-button>
+            </div>
+          </ng-template>
+        </ion-modal>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+        <!-- model profile -->
+        <ion-modal trigger="open-modal-profile" [initialBreakpoint]="1" [breakpoints]="[0, 1]" #myModal>
+          <ng-template>
+            <div class="block-profile">
+              <ion-list class="profile-list" lines="full">
+                <ion-list-header>
+                  <ion-label class="profile-header">Wijzig profielfoto</ion-label>
+                </ion-list-header>
+                <ion-item>
+                  <ion-label class="custom-label">
+                    <ion-icon class="icon" slot="icon-only" name="image-outline"></ion-icon> Kies uit bibliotheek
+                  </ion-label>  
+                </ion-item>
+              </ion-list>
+            </div>
+          </ng-template>
+        </ion-modal>
+
+        <!-- model settings -->
+        <ion-modal trigger="open-modal-settings" [initialBreakpoint]="1" [breakpoints]="[0, 1]" #mySettingsModal>
+          <ng-template>
+            <div class="block-profile">
+              <ion-list class="profile-list" lines="full">
+                <ion-list-header>
+                  <ion-label class="profile-header">Settings</ion-label>
+                </ion-list-header>
+                <ion-item (click)="goToProfile()">
+                  <ion-label class="custom-label">
+                    <ion-icon color="success" slot="icon-only" name="person-outline"></ion-icon> Profile
+                  </ion-label>  
+                </ion-item>
+                <ion-item (click)="goToLogIn()">
+                  <ion-label class="custom-label">
+                    <ion-icon class="icon-red" slot="icon-only" name="log-out-outline"></ion-icon> Log uit
+                  </ion-label>  
+                </ion-item>
+              </ion-list>
+            </div>
+          </ng-template>
+        </ion-modal>
+
+        <!-- Agenda Content -->
+        <div id="home-page">
+          <!-- tracker -->
+          <div class="tracker-div">
+            <p>Je mag nog eten {{dailyCaloriesRemaining | number:'1.0-0'}} caloriëen.</p>
+            <ion-progress-bar class="progress-bar" [value]="progress"></ion-progress-bar>
+            <div class="tracker-info">
+              <p>{{totalCalories | number:'1.0-0'}} caloriëen gegeten</p>
+              <span>Doel: {{totalCaloriesDailyFromCaloriePlan}}</span>
+            </div>
+          </div>
+
+          <div class="content-container">
+            <div class="tracker-section">
+              <div class="tracker-progress">
+                <app-circular-progress-bar [strokeColor]="carbsColor" [textColor]="carbsColor" [percentage]="currentProgressCarbs" [nutritionValue]="totalCarbs" [nutrition]="nutritrions[0]" [unit]="carbsUnit"></app-circular-progress-bar>
+                <app-circular-progress-bar [strokeColor]="proteinsColor" [textColor]="proteinsColor" [percentage]="currentProgressProtein" [nutritionValue]="totalProtein" [nutrition]="nutritrions[1]" [unit]="proteinUnit"></app-circular-progress-bar>
+                <app-circular-progress-bar [strokeColor]="fatsColor" [textColor]="fatsColor" [percentage]="currentProgressFat" [nutritionValue]="totalFats" [nutrition]="nutritrions[2]" [unit]="fatsUnit"></app-circular-progress-bar>
+              </div>
+            </div>
+          
+            <div class="food-list-section">  
+                <app-food-accordion></app-food-accordion> 
+            </div>
+          </div>
+        </div>
+
+        <!--<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+          <ion-fab-button color="success">
+            <ion-icon (click)="goToAddFoodItem()" name="add-outline"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>-->
+
+      </ion-content>
+    </ion-tab>
+
+    <!-- Profile Tab -->
+    <ion-tab tab="profile">
+      <ion-content>
+        <ion-toolbar class="sticky-toolbar">
+          <ion-title slot="start">Hallo {{username}}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button id="open-modal-settings" expand="block">
+              <ion-icon class="icon" slot="icon-only" name="settings-outline"></ion-icon>
+            </ion-button>
+            <ion-button id="open-modal-profile" expand="block">
+              <ion-icon class="icon" slot="icon-only" name="person-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+
+
+        <!-- Profile Content -->
+        <div id="profile-page">
+          <div class="profile-content">
+            <app-foodplan-card></app-foodplan-card>
+            <app-plan-card [buttonActive]="true"></app-plan-card>
+            <app-bmi-indicator [bmi]="userBmi"></app-bmi-indicator>
+            <!--<ion-button (click)="addTodayFoodList()">add</ion-button>-->
+          </div>
+        </div>
+      </ion-content>
+    </ion-tab>
+
+    <!-- Tab Bar -->
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button class="btn-tab" tab="home">
+        <ion-icon class="icon" name="analytics-outline"></ion-icon>
+        <!--<ion-icon class="icon" name="calendar-number-outline"></ion-icon>-->
+        <ion-label class="icon-text">Tracker</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="profile">
+        <ion-icon class="icon" name="person-circle"></ion-icon>
+        <ion-label class="icon-text">Me</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>

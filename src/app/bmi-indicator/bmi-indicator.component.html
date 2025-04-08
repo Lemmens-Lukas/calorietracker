@@ -1,0 +1,36 @@
+<ion-card class="card">
+  <ion-card-header>
+    <ion-card-title>BMI</ion-card-title>
+    <ion-card-subtitle style="font-size: 20px;">{{userBmi}}</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    <div class="bmi-bar">
+      <!-- Underweight section -->
+      <div class="bmi-section underweight"></div>
+    
+      <!-- Normal weight section -->
+      <div class="bmi-section normal-weight"></div>
+    
+      <!-- Overweight section -->
+      <div class="bmi-section overweight"></div>
+    
+      <!-- Obese section -->
+      <div class="bmi-section obese"></div>
+    
+      <!-- Arrow pointing to the user's BMI -->
+      <div class="arrow" [ngStyle]="{ 'left': arrowPosition + '%' }"></div>
+
+      <!-- BMI value labels below the bar -->
+      <div class="bmi-values">
+        <span style="left: 0%;">15</span>
+        <span style="left: 18.5%;">18.5</span>
+        <span style="left: 59.1%;">25</span>
+        <span style="left: 79.5%;">30</span>
+        <span style="left: 96%">35</span>
+      </div>
+
+    </div>
+  </ion-card-content>
+</ion-card>
+

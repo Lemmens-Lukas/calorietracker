@@ -1,0 +1,47 @@
+// icon
+.icon{
+    color: #09c567;
+  }
+
+.info-div{
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    margin-top: 25px;
+
+    .info-title{
+        color: #09c567;
+        font-size: 24px;
+        margin-left: 20px;
+        font-weight: bold;
+    }
+
+    .label{
+        margin-left: 20px;
+    }
+
+    .circ-progress{
+        margin-left: 20px;
+    }
+}
+
+.section {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    gap: 10px; /* Add space between elements */
+
+    .info-section-div{
+        display: flex;
+        flex-direction: column; /* Stack elements vertically */
+        margin-right: 20px;
+    }
+
+    .section-title{
+        font-size: larger;
+        font-weight: bold;        
+    }
+
+    .info-label{
+        font-size: 14px;
+    }
+
+  }

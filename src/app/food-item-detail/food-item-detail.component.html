@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{item?.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form class="content" [formGroup]="foodForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <img src="{{item?.img}}" style="padding: 10px;">
+    </ion-item>
+    <ion-list lines="full">
+      <ion-item>
+        <ion-label position="floating">Calories (for 100g)</ion-label>
+        <ion-input type="number" formControlName="calories"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Fats (for 100g)</ion-label>
+        <ion-input type="number" formControlName="fats"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Protein (for 100g)</ion-label>
+        <ion-input type="number" formControlName="protein"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Carbs (for 100g)</ion-label>
+        <ion-input type="number" formControlName="carbs"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Quantity Eaten (g)</ion-label>
+        <ion-input type="number" formControlName="quantity" required></ion-input>
+      </ion-item>  
+    </ion-list>
+    
+    <div class="save-div">
+      <button class="save-button" (click)="addItemToTodayFoodList(item)" [disabled]="foodForm.invalid" color="success" expand="block" type="submit">
+        Add Item
+      </button>
+    </div>
+  </form>
+</ion-content>
+
+<!--<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button color="success">
+    <ion-icon (click)="addItemToTodayFoodList(item)" name="add-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>-->

@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+    <header lines="full">
+      <ion-title>Add new Food</ion-title>
+    </header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form class="content" [formGroup]="addNewFoodForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <img *ngIf="selectedImageUrl; else defaultImg" [src]="selectedImageUrl" style="padding: 10px;">
+      <ng-template #defaultImg>
+        <img src="assets/foodbackground.jpg" style="padding: 10px;">
+      </ng-template>
+    </ion-item>
+    <ion-list lines="full">
+      <ion-item>
+        <input type="file" id="img" (change)="selectImg($event)" class="form-control">
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Product Name</ion-label>
+        <ion-input type="string" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Product Categorie</ion-label>
+        <ion-select formControlName="categorie">
+          <ion-select-option *ngFor="let cat of categories" [value]="cat">
+            {{ cat }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Calories (for 100g)</ion-label>
+        <ion-input type="number" formControlName="calories"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Fats (for 100g)</ion-label>
+        <ion-input type="number" formControlName="vetten"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Protein (for 100g)</ion-label>
+        <ion-input type="number" formControlName="eiwitten"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Carbs (for 100g)</ion-label>
+        <ion-input type="number" formControlName="koolhydraten"></ion-input>
+      </ion-item> 
+    </ion-list>
+    
+    <div class="save-div">
+      <button class="save-button" [disabled]="addNewFoodForm.invalid" color="success" expand="block" type="submit">
+        Add Item
+      </button>
+    </div>
+    
+  </form>
+</ion-content>

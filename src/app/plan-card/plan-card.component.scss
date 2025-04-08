@@ -1,0 +1,44 @@
+.green-button{
+    color: #212e11;
+    border: 3px solid #212e11;
+    background-color: white;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    font-weight: bold;
+    //#09c567
+}
+
+.button-invis{
+  margin-bottom: 15px;
+  margin-left: 10px;
+  background-color: transparent;
+}
+
+.card{
+    //box-shadow: none;
+    background-size: cover;
+    object-fit: cover;
+    background-color: #8bc34a;
+    //backdrop-filter: opacity(40%)
+}
+
+
+.weight-content{
+  height: fit-content;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #53752c;
+}
+
+.weight-content ion-label {
+  color: white;
+  display: block; /* Stack labels vertically */
+  margin-bottom: 5px; /* Space between the labels */
+}
+
+.custom-card .card-title {
+  color: red; /* Set the title color to red */
+}
+

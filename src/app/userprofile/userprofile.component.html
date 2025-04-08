@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="userInfo?.profile?.profileComplete">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="!userInfo?.profile?.profileComplete">Welcome, setup account!</ion-title>
+    <ion-title *ngIf="userInfo?.profile?.profileComplete">Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Toggle to enable editing -->
+  <ion-item *ngIf="userInfo?.profile?.profileComplete">
+  <ion-toggle [enableOnOffLabels]="true" labelPlacement="start" [checked]="isEditable" (ionChange)="onToggleChange($event)">
+      Edit Profile
+    </ion-toggle>
+  </ion-item>
+    
+  <form [formGroup]="userProfileForm" (ngSubmit)="onSubmit()">
+  <ion-list>
+    <!-- Profile Fields -->
+    <ion-item>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input formControlName="username"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Age</ion-label>
+      <ion-input type="number" formControlName="age"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Weight (kg)</ion-label>
+      <ion-input type="number" formControlName="weight"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Height (cm)</ion-label>
+      <ion-input type="number" formControlName="height"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Goal Weight (kg)</ion-label>
+      <ion-input type="number" formControlName="goalWeight"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Gender</ion-label>
+      <ion-select formControlName="gender">
+        <ion-select-option value="male">Male</ion-select-option>
+        <ion-select-option value="female">Female</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Activity Level</ion-label>
+      <ion-select formControlName="activityLevel">
+        <ion-select-option value="sedentary">Sedentary</ion-select-option>
+        <ion-select-option value="lightly_active">Lightly Active</ion-select-option>
+        <ion-select-option value="moderately_active">Moderately Active</ion-select-option>
+        <ion-select-option value="very_active">Very Active</ion-select-option>
+        <ion-select-option value="super_active">Super Active</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Plan</ion-label>
+        <ion-select formControlName="plan">
+        <ion-select-option value="balanced">Evenwichtig</ion-select-option>
+          <ion-select-option value="muscle_preservation">Spierbehoud</ion-select-option>
+          <ion-select-option value="endurance">Duurtraining</ion-select-option>
+          <ion-select-option value="athletic">Atletisch</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <!-- Submit button -->
+  <div class="save-div">
+    <button class="save-button" color="success" expand="full" type="submit" [disabled]="!userProfileForm.valid">
+      Save Changes
+    </button>
+  </div>  
+  </form>
+</ion-content>

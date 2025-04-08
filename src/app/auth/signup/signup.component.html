@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Create Account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form class="content" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <ion-list class="list">
+      <!-- Username input field -->
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input formControlName="email" type="text" required></ion-input>
+      </ion-item>
+      <div *ngIf="email && email.touched && email.invalid" class="error-message">
+        <p *ngIf="email.errors?.['required']">Email is required.</p>
+        <p *ngIf="email.errors?.['minlength']">Email must be at least 4 characters long.</p>
+      </div>
+
+      <!-- Password input field -->
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input formControlName="password" type="password" required></ion-input>
+      </ion-item>
+      <div *ngIf="password && password.touched && password.invalid" class="error-message">
+        <p *ngIf="password.errors?.['required']">Password is required.</p>
+        <p *ngIf="password.errors?.['minlength']">Password must be at least 6 characters long.</p>
+      </div>
+
+    </ion-list>
+
+    <!-- Submit button -->
+    <ion-button color="success" expand="block" type="submit" [disabled]="registerForm.invalid">
+      Create Account
+    </ion-button>
+  </form>
+</ion-content>

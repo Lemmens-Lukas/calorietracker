@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Voedingsplan</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToEditWeightplan()">
+        <ion-icon class="icon" slot="icon-only" name="create-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-plan-card [buttonActive]="false"></app-plan-card>
+  <div class="info-div">
+    <ion-label class="info-title">{{totalCaloriesDailyFromCaloriePlan}}</ion-label>
+    <ion-label class="label">Dagelijks calorie-advies</ion-label>
+    <ion-label class="label">Voedingsplan: {{profileCaloriePlan}}</ion-label>
+
+    <div class="section">
+      <app-circular-progress-bar style="margin-top: 25px;" [showAdditionalInfo]="false" class="circ-progress top" [strokeColor]="carbsColor" [textColor]="carbsColor" [percentage]="currentProgressCarbs" [nutritionValue]="totalCarbs" [nutrition]="nutritrions[0]" [unit]="carbsUnit"></app-circular-progress-bar>
+      <div class="info-section-div" style="margin-top: 25px;">
+        <ion-label class="section-title">Koolhydraten</ion-label>
+        <ion-label class="info-label" color="dark">Koolhydraten geven je energie. Ze zijn onderdeel van een gezond dieet en helpen je om op gewicht te blijven.</ion-label>
+      </div> 
+    </div>
+
+    <div class="section">
+      <app-circular-progress-bar [showAdditionalInfo]="false" class="circ-progress" [strokeColor]="proteinsColor" [textColor]="proteinsColor" [percentage]="currentProgressProtein" [nutritionValue]="totalCarbs" [nutrition]="nutritrions[0]" [unit]="carbsUnit"></app-circular-progress-bar>
+      <div class="info-section-div">
+        <ion-label class="section-title">Proteïnen</ion-label>
+        <ion-label class="info-label" color="dark">Proteïne is essentieel voor je algemene gezondheid. het helpt spierweefsel te behouden en te herstellen.</ion-label>
+      </div> 
+    </div>
+
+    <div class="section">
+      <app-circular-progress-bar [showAdditionalInfo]="false" class="circ-progress" [strokeColor]="fatsColor" [textColor]="fatsColor" [percentage]="currentProgressFat" [nutritionValue]="totalCarbs" [nutrition]="nutritrions[0]" [unit]="carbsUnit"></app-circular-progress-bar>
+      <div class="info-section-div">
+        <ion-label class="section-title">Vetten</ion-label>
+        <ion-label class="info-label" color="dark">Niet alle vetten zijn slecht. Gezonde vetten kunnen zelfs helpen in een toename van gezondheid en energie.</ion-label>
+      </div> 
+    </div>
+  </div>
+
+</ion-content>

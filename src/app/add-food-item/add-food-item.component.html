@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Choose Food</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="addNewItem()">
+        <ion-icon class="icon" color="success" slot="icon-only" ios="add-circle-outline" md="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full">
+    <!-- Food Items List (Applying a Single Filter Pipe) -->
+    <ion-item>
+      <ion-label>Filter by Category</ion-label>
+      <ion-select [(ngModel)]="selectedCategory" (ionChange)="onCategoryChange($event)">
+        <ion-select-option value="">All Categories</ion-select-option>
+        <ion-select-option *ngFor="let category of uniqueCategories" [value]="category">
+          {{ category }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+     <!-- Search Bar -->
+    <ion-item>
+      <app-searchbar style="width: 50vh;" (searchTextChanged)="search($event)"></app-searchbar>
+    </ion-item>
+    <!-- Food Items List (Applying a Single Filter Pipe) -->
+    <ion-item *ngFor="let item of foodList | filter: filterStatus: 'name' : selectedCategory : 'categorie'">
+      <img alt="Food image" class="img" src="{{item.img ? item.img : 'https://ionicframework.com/docs/img/demos/card-media.png'}}" />
+      <ion-label (click)="goToFoodDetail(item)">
+        <h5 class="item-header">{{ item?.name }}</h5>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

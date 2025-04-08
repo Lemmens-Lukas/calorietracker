@@ -1,0 +1,29 @@
+<svg width="100" height="125">
+  <!-- Background Circle -->
+  <circle cx="50" cy="50" r="45" stroke="#c6c6c6" stroke-width="10" fill="none" />
+  <!-- Progress Circle -->
+  <circle
+    cx="50"
+    cy="50"
+    r="45"
+    [attr.stroke]="strokeColor"
+    stroke-width="10"
+    fill="none"
+    stroke-dasharray="283"
+    [attr.stroke-dashoffset]="calculateOffset(percentage)"
+    [attr.transform]="'rotate(-90 50 50)'" 
+  />
+  <!-- Centered Text -->
+  <text *ngIf="showAdditionalInfo==false" x="50" y="50" text-anchor="middle" alignment-baseline="middle" font-size="20" [attr.fill]="textColor">
+    {{ animatedPercentage | number:'1.0-0' }}%
+  </text>
+  <text *ngIf="showAdditionalInfo==true" x="50" y="45" text-anchor="middle" alignment-baseline="middle" font-size="20" [attr.fill]="textColor">
+    {{ animatedPercentage | number:'1.0-0' }}%
+  </text>
+  <text *ngIf="showAdditionalInfo==true" x="50" y="65" text-anchor="middle" alignment-baseline="middle" font-size="11" [attr.fill]="textColor">
+    {{nutrition}}
+  </text>
+  <text *ngIf="showAdditionalInfo==true" x="50" y="115" text-anchor="middle" alignment-baseline="middle" font-size="14" [attr.fill]="textColor">
+    {{nutritionValue | number:'1.1-1'}}{{unit}}
+  </text>
+</svg>

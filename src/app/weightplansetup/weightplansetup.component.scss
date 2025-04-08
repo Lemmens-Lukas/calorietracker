@@ -1,0 +1,37 @@
+ion-content {
+    display: flex;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    height: 100%; /* Take up full height */
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center; /* Center elements vertically */
+    align-items: center; /* Center elements horizontally */
+    width: 100%; /* Make sure the content takes full width */
+    text-align: center; /* Optional: for centering text inside elements */
+    padding-top: 50%;
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+
+.title{
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.input{
+    margin-bottom: 25px;
+}
+
+.update-button{
+    padding: 10px; 
+    margin-top: 100px;
+    background-color: #09c567 !important;;
+    color: white;
+    border-radius: 12px;
+    width: 75%;
+    height: 40px;
+}

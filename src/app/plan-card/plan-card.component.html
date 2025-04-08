@@ -1,0 +1,22 @@
+<ion-card color="light" class="card custom-card"
+    style="background-image: url('assets/foodbowl.png'); 
+    background-position: calc(100% + 15vh) calc(100% + 22vh); 
+    background-repeat: no-repeat; 
+    object-fit: cover;">
+  <ion-card-header>
+    <ion-card-title *ngIf="weighDifferencePositive==true" style="color: #212e11;">Toename {{weightDifference | number:'1.1-1'}} kg</ion-card-title>
+    <ion-card-title *ngIf="weighDifferencePositive==false" style="color: #212e11;">Afname {{weightDifference | number:'1.1-1'}} kg</ion-card-title>
+    <ion-card-subtitle style="color: #212e11;">Op 28 mar. 2025</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    <div class="weight-content">
+      <!--<ion-label>Start: 55,8 kg</ion-label>-->
+      <ion-label>Current: {{currentWeight}} kg</ion-label>
+      <ion-label>Target: {{userGoalWeight}} kg</ion-label>
+    </div>
+  </ion-card-content>
+
+  <ion-button *ngIf="buttonActive==false" [disabled]="true" class="button-invis" fill="clear"></ion-button>
+  <ion-button *ngIf="buttonActive==true" (click)="goToDetail()" class="green-button" fill="clear">Toon meer</ion-button>
+</ion-card>

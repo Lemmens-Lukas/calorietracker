@@ -1,0 +1,27 @@
+.circular-progress {
+    width: 100px; /* Set the width */
+    height: 100px; /* Set the height */
+  }
+  
+  .circle-bg {
+    fill: none;
+    stroke: #f3f1f1; /* Background color */
+    stroke-width: 3.8; /* Width of the stroke */
+  }
+  
+  .circle {
+    fill: none;
+    stroke: #4db8ff; /* Progress color */
+    stroke-width: 2.8; /* Width of the stroke */
+    transition: stroke-dashoffset 0.5s ease; /* Smooth transition */
+  }
+  
+  .percentage {
+    fill: white; /* Text color */
+    font-size: 10px; /* Font size */
+  }
+
+  circle {
+    transition: stroke-dashoffset 2s ease;  /* Animate the stroke-dashoffset change */
+  }
+  

@@ -1,0 +1,27 @@
+.error-message {
+    color: var(--ion-color-danger);
+    font-size: 0.9em;
+    margin-left: 16px;
+  }
+
+  ion-content {
+    display: flex;
+    justify-content: center;  /* Centers the form horizontally */
+    align-items: center;      /* Centers the form vertically */
+    height: 100%;             /* Ensures the content takes up the full height of the screen */
+    position: relative;         
+  }
+  
+  .content {
+    padding: 20px;
+    width: 100%;    
+    position: absolute;          /* Make the form take full width of the container */
+    top: 50%;
+    left: 50%;
+    box-sizing: border-box;  /* Makes sure padding doesn't overflow the form */
+    transform: translate(-50%, -50%);
+  }
+
+  .list{
+    margin-bottom: 25px;
+  }

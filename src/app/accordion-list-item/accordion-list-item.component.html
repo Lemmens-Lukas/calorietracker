@@ -1,0 +1,28 @@
+<div class="foodlist-container">
+  <!-- 🔹 Fixed Header -->
+  <ion-list-header class="fixed-header">
+    <ion-label class="header-label">{{header}}</ion-label>
+    <ion-button (click)="goToaddNewItemToDatabase()">
+      <ion-icon class="icon" slot="icon-only" ios="add-circle-outline" md="add-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-list-header>
+
+  <!-- 🔹 Scrollable List -->
+  <div class="scrollable-list">
+    <ion-list [inset]="true" lines="full">
+      <ion-item *ngFor="let item of list; let i = index">
+        <img
+          class="img"
+          src="{{item.img ? item.img : 'https://ionicframework.com/docs/img/demos/card-media.png'}}"
+        />
+        <ion-label (click)="goToDetail(item.id || '')">
+          <h5 class="item-header">{{ item?.name }}</h5>
+          <p class="item-label">{{ item?.calories | number:'1.0-0' }} kcal</p>
+        </ion-label>
+        <ion-button fill="clear" color="danger" (click)="onDelete(item.id || '')">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+</div>
